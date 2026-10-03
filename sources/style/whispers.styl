@@ -1,0 +1,31 @@
+.menu .whispers-preview
+    display flex
+    align-items center
+    justify-content center
+    padding-bottom 80px
+
+    .message
+        position relative
+        background #251f2b
+        padding 0 4px 4px 4px
+
+        .text
+            font-size 2.5rem
+            white-space nowrap
+            color #ffffff
+            border none
+            outline none
+
+        .flag
+            position absolute
+            bottom calc(100% - 12px)
+            right -16px
+            width 54px
+            height 36px
+            background red
+            background-size cover
+            transform rotate(15deg)
+            display none
+
+            &.is-visible
+                display block

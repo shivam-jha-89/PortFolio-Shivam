@@ -1,0 +1,403 @@
+.menu-trigger
+    display none
+    position absolute
+    right 0
+    top 20px
+    width 44px
+    height 44px
+    z-index 9
+    -webkit-user-select none
+    -moz-user-select none
+    user-select none
+
+    html.is-started &
+        display block
+
+    html.input-filter-menu &
+    html.input-filter-modal &
+    html.input-filter-cinematic &
+    html.input-filter-intro &
+        pointer-events none
+
+    --hover-translate 4px
+
+    html:not(.is-mode-touch) &:hover
+        .button-inner
+            transform translateX(-4px)
+
+            &::after
+                opacity 0.8
+
+            .icon-container
+                opacity 1
+
+    .button-inner
+        position absolute
+        top 0
+        left 0
+        width calc(100% + var(--hover-translate))
+        height 100%
+        background radial-gradient(ellipse at top right, #C21515, #46123B)
+        transition transform 0.15s 0.15s
+
+        html.input-filter-menu &,
+        html.input-filter-modal &,
+        html.input-filter-intro &
+        html.input-filter-cinematic &
+            transform translateX(100%)
+            transition-delay 0
+
+        &::after
+            content: ''
+            display block
+            position absolute
+            top 3px
+            right 0
+            bottom 3px
+            left 3px
+            border 1px solid #ffffff
+            border-right none
+            opacity 0.35
+            transition opacity 0.15s
+
+        .icon-container
+            display flex
+            position absolute
+            align-items center
+            justify-content center
+            top 0
+            right 0
+            bottom 0
+            left 3px
+
+            .icon
+                position relative
+                width 20px
+                height 14px
+
+                .line
+                    position absolute
+                    left 0
+                    width 100%
+                    height 2px
+                    background #ffffff
+
+                    &:nth-child(1)
+                        top 0
+
+                    &:nth-child(2)
+                        top calc(50% - 1px)
+
+                    &:nth-child(3)
+                        bottom 0
+
+.menu
+    display none
+    align-items center
+    justify-content center
+    color #ffffff
+    opacity 0
+    transition opacity 0.3s
+
+    &.is-displayed
+        display flex
+
+    &.is-visible
+        opacity 1
+
+    *::selection
+        color #251f2b
+        background-color #ffffff
+
+    .inner
+        position relative
+        width @css{ min(1000px, calc(100% - 120px)) }
+        height @css{ min(600px, calc(100% - 120px)) }
+        
+        @media only screen and (orientation portrait)
+            top 22px
+            width @css{ min(600px, calc(100% - 20px)) }
+            height @css{ max(80vh, calc(100% - (44px + 10px))) }
+
+        @media only screen and (max-width 440px)
+            left 0
+            width calc(100vw - 10px)
+
+    .container
+        position relative
+        display flex
+        width 100%
+        height 100%
+
+        @media only screen and (orientation portrait)
+            flex-direction column
+
+    /**
+     * Previews
+     */
+    .previews
+        position relative
+        width 50%
+        display flex
+        align-items center
+        justify-content center
+        background radial-gradient(ellipse at top left, #251f2b, #1d1721)
+
+        @media only screen and (orientation portrait)
+            width auto
+            height 30%
+
+        &::after
+            content ''
+            position absolute
+            top 3px
+            right 3px
+            bottom 3px
+            left 3px
+            border 1px solid #ffffff
+            opacity 0.35
+            pointer-events none
+
+        .background
+            position absolute
+            top 0
+            left 0
+            width 100%
+            height 100%
+            object-fit cover
+
+        .preview
+            position absolute
+            top 0
+            left 0
+            width 100%
+            height 100%
+            opacity 0
+            pointer-events none
+            transition opacity 0.3s
+            transition-delay 0.3s
+
+            &.is-visible
+                opacity 1
+                pointer-events auto
+                transition-delay 0s
+
+    /**
+     * Contents
+     */
+    .contents
+        position relative
+        width 50%
+        background radial-gradient(ellipse at top left, #251f2b, #1d1721)
+        overflow hidden
+
+        @media only screen and (orientation portrait)
+            width auto
+            height 70%
+
+        .content
+            display block
+            position absolute
+            top 0
+            left 0
+            width calc(100% + 20px)
+            height 100%
+            background radial-gradient(ellipse at top left, #251f2b, #1d1721)
+            opacity 0
+            pointer-events none
+            overflow-x hidden
+            overflow-y scroll
+            transition opacity 0.3s
+            transition-delay 0s
+
+            &.is-visible
+                opacity 1
+                pointer-events auto
+                transition-delay 0.1s
+
+        .title
+            margin-bottom 0.5em
+
+        .content-inner
+            width @css{ calc(min(1000px, calc(100vw - 120px)) / 2) }
+            padding 25px 40px 40px 40px
+
+            @media only screen and (orientation portrait)
+                width @css{ min(600px, calc(100% - 20px)) }
+
+            @media only screen and (max-width 870px)
+                padding 20px 30px 30px 30px
+
+            @media only screen and (max-width 520px)
+                padding 15px 20px 20px 20px
+
+            @media only screen and (max-width 440px)
+                padding 10px 15px 15px 15px
+                width calc(100vw - 10px)
+
+    /**
+     * Navigation
+     */
+    .navigation
+        display flex
+        position absolute
+        left calc(50% + 10px)
+        bottom 100%
+        gap 3px
+
+        @media only screen and (orientation portrait)
+            left 10px
+
+        @media only screen and (max-width 520px)
+            left 0
+            gap 1px
+
+        .item
+            position relative
+            width 50px
+            height 44px
+
+            --hover-translate 4px
+
+            @media only screen and (max-width 440px)
+                width 43px
+                height 40px
+
+            html:not(.is-mode-touch) &:hover
+                .button-inner
+                    transform translateY(-4px)
+
+                    &::after
+                        opacity 0.8
+
+                    .icon-container
+                        opacity 1
+
+            &.is-active
+                .button-inner
+                    background #241e2a
+
+                    .icon-container
+                        opacity 1
+
+            .button-inner
+                position absolute
+                top 0
+                left 0
+                width 100%
+                height calc(100% + var(--hover-translate))
+                background radial-gradient(ellipse at top right, #251f2b, #1d1721)
+                transition transform 0.15s
+
+                &::after
+                    content: ''
+                    display block
+                    position absolute
+                    top 3px
+                    right 3px
+                    bottom 0
+                    left 3px
+                    border 1px solid #ffffff
+                    border-bottom none
+                    opacity 0.35
+                    transition opacity 0.15s
+
+                .icon-container
+                    display flex
+                    position absolute
+                    align-items center
+                    justify-content center
+                    top 3px
+                    right 3px
+                    bottom var(--hover-translate)
+                    left 3px
+                    color #ffceca
+                    opacity 0.55
+
+    /**
+     * Close
+     */
+    .close
+        position absolute
+        right 10px
+        bottom 100%
+        width 50px
+        height 44px
+
+        @media only screen and (max-width 520px)
+            right 0
+
+        @media only screen and (max-width 440px)
+            width 43px
+            height 40px
+
+        @media only screen and (max-width 360px)
+            right -1px
+            top 10px
+            bottom auto
+            width 44px
+            z-index 1
+            transform rotate(-90deg)
+
+        --hover-translate 4px
+
+        html:not(.is-mode-touch) &:hover
+            .button-inner
+                transform translateY(-4px)
+                
+                &::after
+                    opacity 0.8
+
+        .button-inner
+            position absolute
+            top 0
+            right 0
+            width 100%
+            height calc(100% + var(--hover-translate))
+            background radial-gradient(ellipse at top right, #C21515, #46123B)
+            transition transform 0.15s
+
+            &::after
+                content: ''
+                display block
+                position absolute
+                top 3px
+                right 3px
+                bottom 0
+                left 3px
+                border 1px solid #ffffff
+                border-bottom none
+                opacity 0.35
+                transition opacity 0.15s
+
+            .icon-container
+                display flex
+                position absolute
+                align-items center
+                justify-content center
+                top 3px
+                right 3px
+                left 3px
+                bottom var(--hover-translate)
+
+                .icon
+                    &.is-default
+                        width 18px
+                        height 18px
+
+                        .is-mode-gamepad.is-gamepad-xbox &
+                            display none
+
+                    &.is-xbox
+                        display none
+                        justify-content center
+                        align-items center
+                        vertical-align bottom
+                        border 2px solid #ffffff
+                        // padding-top 2px
+                        width 30px
+                        height 30px
+                        border-radius 15px
+
+                        .is-mode-gamepad.is-gamepad-xbox &
+                            display block

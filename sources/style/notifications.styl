@@ -1,0 +1,161 @@
+.notifications
+
+    --max-width @css{ min(350px, calc(100% - 40px)) }
+
+    html.is-mode-touch &
+        --max-width @css{ min(350px, calc(100% - 88px)) }
+
+    position absolute
+    top 20px
+    left calc(50% - var(--max-width) / 2)
+    right 0
+    width var(--max-width)
+
+    .items
+        position absolute
+        top 0
+        left 0
+        width 100%
+
+    .notification
+        position relative
+        width 100%
+        padding 12px 20px 15px 15px
+        background radial-gradient(ellipse at top left, #251f2b, #1d1721)
+        font-size 16px
+        cursor pointer
+        -webkit-user-select none
+        -moz-user-select none
+        user-select none
+        transform translateY(calc(-100% - 20px))
+        transition transform 0.6s cubic-bezier(0.4, 1.6, 0.65, 1)
+
+        &.is-visible
+            transform translateY(0)
+
+        &.is-leaving
+            transform translateY(calc(-100% + 20px)) scale(0, 0)
+            transition-timing-function cubic-bezier(0.42, 0, 0.47,-0.55)
+            transition-duration 0.45s
+
+        html:not(.is-mode-touch) &:hover
+            .bottom
+                .open-icon
+                    opacity 1
+
+        .time-bar
+            position absolute
+            top 0
+            left 0
+            width 100%
+            height 2px
+            background #ffceca
+            transform-origin 100% 0
+            will-change transform
+
+        &.is-achievement
+            // padding 12px 20px 15px 15px
+
+            .top
+                display flex
+                justify-content space-between
+                align-items center
+                margin-bottom 5px
+
+                .title
+                    text-align left
+                    color #d5ff95
+                    font-size 1.7rem
+                    margin-right 10px
+                    margin-bottom 0
+                    line-height 1em
+                    margin-bottom 0.25em
+
+                .progress
+                    display flex
+                    align-items center
+                    font-weight 700
+                    color #d5ff95
+
+                    .check-icon
+                        display block
+                        width 17px
+                        height 13px
+                        margin-right 10px
+                        background url(../ui/achievements/check.svg)
+
+            .bottom
+                display flex
+                justify-content space-between
+                align-items flex-start
+
+                .description
+                    margin-right 10px
+                    margin-bottom 0
+                    color #ffffff
+                    line-height 1em
+                    font-size 16px
+                
+                .open-icon
+                    display block
+                    position relative
+                    top 1px
+                    width 19px
+                    height 19px
+                    background url('../ui/actions/actions-icon-open.webp')
+                    background-size 19px 19px
+                    opacity 0
+                    transition opacity 0.1s
+
+            .time-bar
+                background #d5ff95
+
+
+        &.is-song
+            .top
+                display flex
+                justify-content space-between
+                align-items center
+
+                .title
+                    text-align left
+                    color #ffc67b
+                    font-size 1.7rem
+                    margin-bottom 0
+                    line-height 1em
+
+                    .song-name
+                        color #ffffff
+
+                .music-note-icon
+                    display block
+                    width 16px
+                    height 18px
+                    background url(../ui/music-note.svg)
+
+            .time-bar
+                background #ffc67b
+
+        &.is-server-connected
+            .top
+                .title
+                    text-align left
+                    color #d5ff95
+                    font-size 1.7rem
+                    margin-bottom 0
+                    line-height 1em
+
+            .time-bar
+                background #d5ff95
+
+        &.is-server-disconnected
+            .top
+                .title
+                    text-align left
+                    color #ff6a7c
+                    font-size 1.7rem
+                    margin-bottom 0
+                    line-height 1em
+
+            .time-bar
+                background #ff6a7c

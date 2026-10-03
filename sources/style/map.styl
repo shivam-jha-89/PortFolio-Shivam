@@ -1,0 +1,330 @@
+.map-trigger
+    display none
+    position absolute
+    right 0
+    top 70px
+    width 44px
+    height 44px
+    z-index 9
+    -webkit-user-select none
+    -moz-user-select none
+    user-select none
+
+    html.is-started &
+        display block
+
+    html.input-filter-menu &
+    html.input-filter-cinematic &
+    html.input-filter-intro &
+        pointer-events none
+
+    --hover-translate 4px
+
+    html:not(.is-mode-touch) &:hover
+        .button-inner
+            transform translateX(-4px)
+
+            &::after
+                opacity 0.8
+
+            .icon-container
+                opacity 1
+
+    .button-inner
+        position absolute
+        top 0
+        left 0
+        width calc(100% + var(--hover-translate))
+        height 100%
+        background radial-gradient(ellipse at top right, #C21515, #46123B)
+        transition transform 0.15s 0.15s
+
+        html.input-filter-menu &,
+        html.input-filter-modal &,
+        html.input-filter-intro &
+        html.input-filter-cinematic &
+            transform translateX(100%)
+            transition-delay 0
+
+        &::after
+            content: ''
+            display block
+            position absolute
+            top 3px
+            right 0
+            bottom 3px
+            left 3px
+            border 1px solid #ffffff
+            border-right none
+            opacity 0.35
+            transition opacity 0.15s
+
+        .icon-container
+            display flex
+            position absolute
+            align-items center
+            justify-content center
+            top 0
+            right 0
+            bottom 0
+            left 3px
+
+            // .icon
+            //     position relative
+            //     width 20px
+            //     height 14px
+
+.map
+    position relative
+    width 1024px
+    height 1024px
+    max-width 100vmin
+    max-height 100vmin
+    aspect-ratio 1 / 1
+    background radial-gradient(ellipse at top left, #251f2b, #1d1721)
+    -webkit-user-select none
+    -moz-user-select none
+    user-select none
+
+    @media only screen and (max-width 1100px)
+        width 768px
+        height 768px
+
+    @media only screen and (max-width 800px)
+        width 512px
+        height 512px
+    
+    /**
+     * Close
+     */
+    .close
+        position absolute
+        right 10px
+        bottom 100%
+        width 50px
+        height 44px
+
+        --hover-translate 4px
+
+        @media only screen and (max-width 520px)
+            right 0
+
+        @media only screen and (max-width 440px)
+            width 43px
+            height 40px
+
+        @media only screen and (max-width 360px)
+            right -1px
+            top 10px
+            bottom auto
+            width 44px
+            z-index 1
+            transform rotate(-90deg)
+
+        html:not(.is-mode-touch) &:hover
+            .button-inner
+                transform translateY(-4px)
+                
+                &::after
+                    opacity 0.8
+
+        .button-inner
+            position absolute
+            top 0
+            right 0
+            width 100%
+            height calc(100% + var(--hover-translate))
+            background radial-gradient(ellipse at top right, #C21515, #46123B)
+            transition transform 0.15s
+
+            &::after
+                content: ''
+                display block
+                position absolute
+                top 3px
+                right 3px
+                bottom 0
+                left 3px
+                border 1px solid #ffffff
+                border-bottom none
+                opacity 0.35
+                transition opacity 0.15s
+
+            .icon-container
+                display flex
+                position absolute
+                align-items center
+                justify-content center
+                top 3px
+                right 3px
+                left 3px
+                bottom var(--hover-translate)
+
+                .icon
+                    &.is-default
+                        width 18px
+                        height 18px
+
+                        .is-mode-gamepad.is-gamepad-xbox &
+                            display none
+
+                    &.is-xbox
+                        display none
+                        justify-content center
+                        align-items center
+                        vertical-align bottom
+                        border 2px solid #ffffff
+                        // padding-top 2px
+                        width 30px
+                        height 30px
+                        border-radius 15px
+
+                        .is-mode-gamepad.is-gamepad-xbox &
+                            display block
+
+    .map-container
+        position absolute
+        top 0
+        left 0
+        width 100%
+        height 100%
+        overflow hidden
+
+        &::after
+            content ''
+            position absolute
+            top 3px
+            right 3px
+            bottom 3px
+            left 3px
+            border 1px solid #ffffff
+            opacity 0.35
+            pointer-events none
+
+    .texture
+        display block
+        position absolute
+        top 0
+        left 0
+        width 100%
+        height 100%
+        pointer-events none
+        opacity 0
+        transition opacity 0.3s
+
+        &.is-visible
+            opacity 1
+
+    .player
+        display block
+        position absolute
+        top 0
+        left 0
+        pointer-events none
+
+        &.is-bouncing
+            &::after
+                animation map-player-animation 1s 0.5s
+
+                @keyframes map-player-animation
+                    0%
+                        transform scale(1, 1)
+                    20%
+                        transform scale(1.2, 1.2)
+                    40%
+                        transform scale(1, 1)
+                    60%
+                        transform scale(1.2, 1.2)
+                    80%
+                        transform scale(1, 1)
+
+        &::after
+            content ''
+            position absolute
+            width 80px
+            height 80px
+            top -40px
+            left -40px
+            background url('../ui/map/player.webp')
+            background-size cover
+
+            @media only screen and (max-width 800px)
+                width 60px
+                height 60px
+                top -30px
+                left -30px
+
+            @media only screen and (max-width 440px)
+                width 40px
+                height 40px
+                top -20px
+                left -20px
+    
+    .location
+        --size 40px
+        position absolute
+        width var(--size)
+        height var(--size)
+        margin-top calc(var(--size) / -2)
+        margin-left calc(var(--size) / -2)
+        cursor pointer
+
+        html:not(.is-mode-touch) &:hover
+        html.is-mode-touch &
+            .name
+                transform scale(1, 1)
+                transition-timing-function cubic-bezier(0.49, 2.2, 0.53, 0.75)
+
+                @media only screen and (max-width 1100px)
+                    transform scale(0.8, 0.8)
+
+                @media only screen and (max-width 520px)
+                    transform scale(0.65, 0.65)
+
+        .pin
+            --size 20px
+
+            position absolute
+            top calc(50% - calc(var(--size) / 2))
+            left calc(50% - calc(var(--size) / 2))
+            width var(--size)
+            height var(--size)
+            background #ffffff
+            border 4px solid #251f2b
+            transform rotate(45deg)
+            box-shadow 0 0 4px #251f2b77
+
+            @media only screen and (max-width 520px)
+                --size 12px
+                border-width 3px
+
+        .name-container
+            display flex
+            justify-content center
+            position absolute
+            bottom calc(100% - 4px)
+            left 50%
+            width 0
+            pointer-events none
+
+            @media only screen and (max-width 520px)
+                bottom calc(100% - 12px)
+
+            .name
+                background #000000
+                text-transform uppercase
+                color #ffffff
+                padding 2px 6px
+                letter-spacing 1px
+                text-align center
+                box-shadow 0 0 4px #00000077
+                white-space nowrap
+                transform-origin 50% 80%
+                transform scale(0, 0)
+                transition transform 0.3s cubic-bezier(0.65,-1, 0.45, 1)
+
+                br
+                    display none
+                    
+                    @media only screen and (max-width 520px)
+                        display initial

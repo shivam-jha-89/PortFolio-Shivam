@@ -1,0 +1,80 @@
+.menu .contents .easter-content
+
+    .title
+        text-align center
+        margin-bottom 0
+
+    .subtitle
+        text-align center
+        margin-bottom 1em
+        color #ffceca
+        font-size 1.5rem
+
+    .introduction
+        text-align center
+
+        p
+            margin-bottom 1em
+
+        ul
+            display flex
+            flex-direction column
+            justify-content center
+            margin-bottom 1em
+            text-align left
+
+        a
+            color inherit
+
+    
+    .egg
+        margin-bottom 1em
+
+        &.is-used
+            // ff663f
+            .discount
+            .uses
+                color #d5ff95
+
+            .bar
+                .fill
+                    background #d5ff95
+                    transform scale(1) !important
+
+        .top
+            display flex
+            align-items flex-end
+            margin-bottom 0.5em
+
+        .discount
+            position relative
+            top 3px
+            margin-right 0.25em
+            color #ffceca
+            font-size 2rem
+
+        .description
+            font-weight bold
+
+        .uses
+            display flex
+            align-items center
+            margin-left auto
+            font-weight 700
+            color #ffceca
+
+        .bar
+            position relative
+            height 18px
+            border 1px solid alpha(#ffffff, 0.35)
+
+            .fill
+                position absolute
+                top 4px
+                right 4px
+                bottom 4px
+                left 4px
+                background #ffceca
+                transform-origin 0 0
+                transform scaleX(0)
+

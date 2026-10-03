@@ -1,0 +1,38 @@
+.menu .contents .options-content
+
+    .content-inner
+        display flex
+        flex-direction column
+        justify-content flex-start
+        align-items center
+
+    table
+        border-spacing 0 10px
+
+        td:first-child
+            padding-right 40px
+        
+    .audio-toggle
+        img
+            width 29px
+            height 27px
+
+            &.audio-off
+                display none
+                
+            &.audio-on
+                display block
+
+        html.is-audio-muted &
+            img
+                &.audio-on
+                    display none
+
+                &.audio-off
+                    display block
+
+    .button
+        display flex
+        align-items center
+        justify-content center
+        width 100%

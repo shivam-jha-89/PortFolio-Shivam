@@ -1,0 +1,277 @@
+.black-friday
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    letter-spacing: 0.05em;
+    line-height: 1.65em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.black-friday::-moz-selection
+{
+    color: #000000;
+    background: #ffffff;
+}
+
+.black-friday::selection
+{
+    color: #000000;
+    background: #ffffff;
+}
+
+.black-friday p
+{
+    margin-bottom: 0.5em;
+}
+
+.black-friday .fragments
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20vh;
+    background: linear-gradient(#00000000, #000000aa);
+    pointer-events: none;
+}
+
+.black-friday .fragments .fragment
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.black-friday .fragments .fragment .stroke
+{
+    position: absolute;
+    bottom: 0px;
+    left: -20px;
+    height: 1px;
+    width: 140%;
+    background: linear-gradient(90deg, #ffffff00, #ffffffff ,#ffffff00)
+}
+
+.black-friday .fragments .fragment .bottom
+{
+    position: absolute;
+    top: 100%;
+    height: 20px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.black-friday .fragments .fragment .bottom::after
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background: radial-gradient(closest-side, #bf65ff, #bf65ff00);
+    opacity: 0.4;
+}
+
+.black-friday .fragments .fragment .character
+{
+    position: relative;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-family: "Caesar Dressing", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    text-shadow: 0 0 10px #bf65ff77;
+    transform: scale(0, 0);
+    transition: transform 0.3s 0.2s cubic-bezier(0.53, 3, 0.58, 1);
+}
+
+.black-friday .fragments .fragment .particles
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.black-friday .fragments .fragment .particles .particle
+{
+    position: absolute;
+    width: 0;
+    height: 0;
+    animation: particle infinite 4s;
+    animation-fill-mode: backwards;
+}
+
+.black-friday .fragments .fragment .particles .particle::after
+{
+    content: '';
+    display: block;
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 8px;
+    height: 8px;
+    background: #f1d7ff;
+    box-shadow: 0 0 10px 5px #bf65ff77;
+    border-radius: 5px;
+}
+
+.black-friday .fragments .fragment .particles .particle:nth-child(1)  { left: 75%; }
+.black-friday .fragments .fragment .particles .particle:nth-child(2)  { left: 15%; }
+.black-friday .fragments .fragment .particles .particle:nth-child(3)  { left: 25%; }
+.black-friday .fragments .fragment .particles .particle:nth-child(4)  { left: 35%; }
+.black-friday .fragments .fragment .particles .particle:nth-child(5)  { left: 45%; }
+.black-friday .fragments .fragment .particles .particle:nth-child(6)  { left: 95%; }
+.black-friday .fragments .fragment .particles .particle:nth-child(7)  { left:  5%; }
+.black-friday .fragments .fragment .particles .particle:nth-child(8)  { left: 65%; }
+.black-friday .fragments .fragment .particles .particle:nth-child(9)  { left: 85%; }
+.black-friday .fragments .fragment .particles .particle:nth-child(10) { left: 55%; }
+
+.black-friday .fragments .fragment .particles .particle:nth-child(1)  { animation-delay: 0.8s; }
+.black-friday .fragments .fragment .particles .particle:nth-child(2)  { animation-delay: 2.4s; }
+.black-friday .fragments .fragment .particles .particle:nth-child(3)  { animation-delay: 3.6s; }
+.black-friday .fragments .fragment .particles .particle:nth-child(4)  { animation-delay: 3.2s; }
+.black-friday .fragments .fragment .particles .particle:nth-child(5)  { animation-delay: 0.4s; }
+.black-friday .fragments .fragment .particles .particle:nth-child(6)  { animation-delay: 2.8s; }
+.black-friday .fragments .fragment .particles .particle:nth-child(7)  { animation-delay: 2.0s; }
+.black-friday .fragments .fragment .particles .particle:nth-child(8)  { animation-delay: 0.0s; }
+.black-friday .fragments .fragment .particles .particle:nth-child(9)  { animation-delay: 1.6s; }
+.black-friday .fragments .fragment .particles .particle:nth-child(10) { animation-delay: 1.2s; }
+
+@keyframes particle {
+    0% { transform: translateY(90px) scale(1); }
+    100% { transform: translateY(0px) scale(0); }
+}
+
+.black-friday .fragments .fragment.is-caught
+{
+    opacity: 1;
+}
+
+.black-friday .fragments .fragment.is-caught .character
+{
+    transform: scale(1, 1);
+}
+
+/*
+/* Panel
+ */
+.black-friday .panel
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1a141eeb;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s;
+    pointer-events: none;
+}
+
+.black-friday .panel .inner > *
+{
+    opacity: 0;
+    transition: opacity 1s;
+}
+.black-friday .panel .inner > *:nth-child(1) { transition-delay: 0.5s; }
+.black-friday .panel .inner > *:nth-child(2) { transition-delay: 0.65s; }
+.black-friday .panel .inner > *:nth-child(3) { transition-delay: 0.8s; }
+.black-friday .panel .inner > *:nth-child(4) { transition-delay: 0.95s; }
+.black-friday .panel .inner > *:nth-child(5) { transition-delay: 1.1s; }
+.black-friday .panel .inner > *:nth-child(6) { transition-delay: 1.25s; }
+.black-friday .panel .inner > *:nth-child(7) { transition-delay: 1.4s; }
+.black-friday .panel .inner > *:nth-child(8) { transition-delay: 1.55s; }
+.black-friday .panel .inner > *:nth-child(9) { transition-delay: 1.7s; }
+
+.black-friday .panel.is-active
+{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.black-friday .panel.is-active .inner > *
+{
+    opacity: 1;
+}
+
+.black-friday .panel .inner
+{
+    display: flex;
+    height: calc(100% - 10vh);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.black-friday .panel .title
+{
+    font-family: "Caesar Dressing", system-ui;
+    font-weight: 400;
+    font-size: 60px;
+    margin-bottom: 40px;
+}
+
+.black-friday .panel .button
+{
+    display: inline-block;
+    padding: 10px 18px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    font-family: "Caesar Dressing", system-ui;
+    font-weight: 400;
+    font-size: 25px;
+    text-decoration: none;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    background: none;
+}
+
+.black-friday .panel .button.is-muted
+{
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.black-friday .panel .button:hover
+{
+    background: #ffffff;
+    color: #000000;
+}
+
+.black-friday .logos
+{
+    max-width: calc(100vw - 20px);
+    height: auto;
+}
+
+.black-friday .no-mobile-container
+{
+    display: none;
+}

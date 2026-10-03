@@ -1,0 +1,77 @@
+.discord
+    .content
+        > .title
+            text-align center
+            margin-bottom 2rem
+
+        .optional
+            @media only screen and (max-width 870px)
+                display none
+
+        .items
+            display flex
+            gap 30px
+
+            @media only screen and (orientation portrait)
+                flex-direction column
+        
+        .item
+            display flex
+            flex-direction column
+            align-items center
+            justify-content center
+            position relative
+            width 300px
+            padding 20px 20px 50px 20px
+            margin-bottom 30px
+            text-align center
+            padding-top 1.7rem
+            border 1px solid #ffceca
+            border-top none
+
+            @media only screen and (orientation portrait)
+                width auto
+        
+            .title-container
+                display flex
+                position absolute
+                top 0
+                left 0
+                right 0
+                height 0
+                align-items center
+                gap 10px
+
+                .line
+                    flex 1
+                    height 1px
+                    background #ffceca
+
+                .title
+                    flex 1
+                    font-size 1.7rem
+                    color #ffceca
+                    white-space nowrap
+                    margin-bottom 0
+
+            .button-container
+                display flex
+                position absolute
+                bottom 0
+                left 0
+                right 0
+                height 0
+                align-items center
+                justify-content center
+
+                .button
+                    background #251f2b
+                    opacity 1
+                    color #ffceca
+                    border-color #ffceca
+                    
+                    html:not(.is-mode-touch) &:hover
+                        color #ffffff
+                        border-color #ffffff
+
+

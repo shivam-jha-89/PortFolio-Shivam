@@ -1,0 +1,391 @@
+
+*
+    box-sizing border-box
+    margin 0
+    padding 0
+    -webkit-tap-highlight-color transparent
+
+button
+input
+    background none
+    color inherit
+    border none
+    padding 0
+    font inherit
+    outline inherit
+
+button
+    cursor pointer
+
+html
+body
+.game
+.modals
+.menu
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 100%
+    font-family "Nunito", sans-serif
+    font-optical-sizing auto
+    font-weight 400
+    font-style normal
+    -webkit-font-smoothing antialiased
+    -moz-osx-font-smoothing grayscale
+    overflow hidden
+
+.experience
+    touch-action none
+
+    .input-filter-wandering &,
+    .input-filter-intro &
+        cursor grab
+
+        &:active
+            cursor grabbing
+
+html
+    background radial-gradient(farthest-side at 0 0, #251f2b, #1d1721)
+    font-size 20px
+    touch-action manipulation // Prevents double tap zoom
+
+    @media only screen and (max-width 520px)
+        font-size 18px
+
+    @media only screen and (max-width 440px)
+        font-size 16px;
+
+ul
+ol
+    padding-left 25px
+
+.title
+    margin-bottom 0.25em
+    font-size 2.5rem
+    font-family "Amatic SC", sans-serif
+    font-weight 700
+    font-style normal
+
+.text
+    margin-bottom 0.75em
+    font-size 1rem
+
+    a
+        color inherit
+        text-decoration underline
+
+.text-small
+    font-size 0.8rem
+
+.text-danger
+    color #ff87a2
+    
+    .icon
+        vertical-align sub
+
+.text-faded
+    opacity 0.8
+
+.text-align-right
+    text-align right
+
+.text-align-center
+    text-align center
+
+.horizontal-group
+    display flex
+    align-items center
+    justify-content center
+    gap 10px
+
+    @media only screen and (max-width 520px)
+        flex-direction column
+
+    > *
+        // margin-right 10px
+
+        // &:last-child
+        //     margin-right 0
+        
+a.button
+        display inline-block
+
+.button
+    vertical-align top
+    padding 0 16px
+    height 58px
+    line-height 58px
+    border-radius 8px
+    white-space nowrap
+    color inherit
+    text-decoration none
+    border 1px solid alpha(#ffffff, 0.8)
+    color alpha(#ffffff, 0.8)
+    cursor default
+
+    @media only screen and (max-width 520px)
+        padding 0 13px
+        height 50px
+        line-height 50px
+
+    @media only screen and (max-width 440px)
+        padding 0 10px
+        height 45px
+        line-height 45px
+
+    &:not(.is-disabled)
+        cursor pointer
+
+    &.is-disabled
+        border-style dashed
+
+        &.has-tooltip
+            cursor help
+
+    &.is-success
+        color #d5ff95
+
+    &.is-danger
+        color #ff6a7c
+
+    html:not(.is-mode-touch) &:not(.is-disabled):hover
+        border 1px solid alpha(#ffffff, 1)
+        color alpha(#ffffff, 1)
+
+    .icon
+        position relative
+        vertical-align middle
+
+        &.icon-audio
+            top -2px
+
+        &.icon-restart
+            top -2px
+
+        &.icon-flag
+            top -1px
+
+        &.icon-controller
+            top -1px
+
+.input-group
+    display flex
+    height 58px
+
+    &.is-message
+        width 100%
+        margin-top 1.5em
+
+        .input-text
+            width calc(100% - 62px * 2)
+            padding 0 15px 0 5px
+
+    &.is-name-tag
+        .input-text
+            width 100px
+            font-size 25px
+            letter-spacing 8px
+            text-transform uppercase
+            font-weight 700
+            // padding 0 15px 0 5px
+
+            &::placeholder
+                letter-spacing 14px
+                padding-left 4px
+
+    > *
+        border-top 1px solid #555555
+        border-bottom 1px solid #555555
+
+    >:first-child
+        border-radius 8px 0 0 8px
+        border-left 1px solid #555555
+
+    &.is-valide
+        button
+            cursor pointer
+            border-color #ffceca
+            color #ffceca
+
+            &.has-icon
+                svg
+                    *
+                        stroke #ffceca
+
+    .input-text
+        padding 0 15px 0 5px
+
+    .submit
+        border-radius 0 8px 8px 0
+        border 1px solid #555555
+        cursor default
+        color #555555
+
+        &.has-text
+            padding 0 20px
+
+        &.has-icon
+            width 62px
+            padding 0 8px 0 4px
+
+            svg
+                *
+                    stroke #555555
+
+    .input-flag
+        position relative
+        width 62px
+        font-size 16px
+
+        .flag-button
+            position absolute
+            top 0
+            left 0
+            width 100%
+            height 100%
+            display flex
+            justify-content center
+            align-items center
+            cursor pointer
+
+            &.has-flag
+                .flag
+                    display block
+
+                svg
+                    display none
+
+            .flag
+                display none
+                width 27px
+                height 18px
+
+            html:not(.is-mode-touch) &:hover
+                svg
+                    *
+                        fill #cccccc
+
+            svg
+                display block
+
+                *
+                    fill #555555
+
+        .flag-select
+            display none
+            position absolute
+            bottom 0
+            left 8px
+            width 350px
+            height 240px
+            background radial-gradient(ellipse at top left, #251f2b, #1d1721)
+            border-radius 8px 8px 0 0
+            border 1px solid #767676
+            border-bottom none
+            overflow hidden
+            white-space nowrap
+            z-index 1
+
+            &.is-visible
+                display block
+
+            .close-mini
+                display flex
+                align-items center
+                justify-content center
+                position absolute
+                height 40px
+                width 34px
+                top 0
+                right 0
+                opacity 0.65
+                cursor pointer
+
+                html:not(.is-mode-touch) &:hover
+                    opacity 1
+
+                img
+                    position relative
+                    top 4px
+                    left -3px
+            
+
+            .remove
+                display flex
+                align-items center
+                justify-content center
+                position absolute
+                height 40px
+                width 34px
+                top 0
+                right 30px
+                opacity 0.65
+                cursor pointer
+
+                html:not(.is-mode-touch) &:hover
+                    opacity 1
+
+                img
+                    position relative
+                    top 3px
+            
+            .search
+                height 40px
+                width 100%
+                padding 4px 35px 0 10px
+
+            .no-result
+                display none
+                justify-content center
+                align-items center
+                position absolute
+                top 30px
+                bottom 0
+                left 0
+                right 0
+                opacity 0.65
+                pointer-events none
+
+                &.is-visible
+                    display flex
+            
+            .choices
+                position absolute
+                top 40px
+                bottom 0
+                left 0
+                right 0
+            
+                .scroller
+                    position absolute
+                    top 0
+                    left 0
+                    width calc(100% + 20px)
+                    height 100%
+                    overflow-y scroll
+                    overflow-x hidden
+
+                .choice
+                    display flex
+                    padding 4px 8px
+                    cursor pointer
+
+                    html:not(.is-mode-touch) &:hover
+                        .label
+                            opacity 1
+
+                    .label
+                        opacity 0.65
+
+                    .flag
+                        margin-right 8px
+                        width 27px
+                        height 18px
+
+html:not(.is-server-offline) .offline-element
+    display none !important
+
+html:not(.is-server-online) .online-element
+    display none !important
+
